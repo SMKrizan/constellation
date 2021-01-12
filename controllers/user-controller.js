@@ -3,6 +3,7 @@ const { User } = require('../models');
 const userController = {
     getAllUsers(req, res) {
         User.find({})
+            .select('-__v')
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {
                 console.log(err);
@@ -12,6 +13,7 @@ const userController = {
 
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
+            .select('-__v')
             .then(dbUserData => {
                 if (!dbUserData) {
                     res.status(404).json({ message: 'No user with that id was found.' });
@@ -32,7 +34,7 @@ const userController = {
     },
 
     updateUserById({ params, body }, res) {
-        User.findOneAndUpdate({ _id: params.id }, body, { new: True })
+        User.findOneAndUpdate({ _id: params.id }, body, { new: true })
             .then(dbUserData => {
                 if (!dbUserData) {
                     res.status(404).json({ message: 'No user with this id was found.' });

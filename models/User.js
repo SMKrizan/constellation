@@ -16,12 +16,14 @@ const UserSchema = new Schema({
     thoughts: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Thought'
+            // tells model which document to search to find thoughts
+            ref: 'Thoughts'
         }
     ],
     friends: [
         {
             type: Schema.Types.ObjectId,
+            // self-referencing
             ref: 'User'
         }
     ]
@@ -30,12 +32,15 @@ const UserSchema = new Schema({
         toJSON: {
             virtuals: true,
             // getters: true
-        }
+        },
+        id: false
     }
 );
 
 UserSchema.virtual('friendCount').get(function () {
-    return this.friends.reduce((total, friend) => total + friends.length + 1, 0);
+    console.log('this.friends: ', this.friends)
+    return this.friends.length;
+    // return this.friends.reduce((total, friends) => total + friends.length + 1, 0);
 });
 
 const User = model('User', UserSchema);

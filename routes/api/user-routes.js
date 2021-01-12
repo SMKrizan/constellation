@@ -4,8 +4,8 @@ const {
     getAllUsers,
     getUserById,
     createUser,
-    updateUserById
-    deleteUser,
+    updateUserById,
+    deleteUser
 } = require('../../controllers/user-controller');
 
 
