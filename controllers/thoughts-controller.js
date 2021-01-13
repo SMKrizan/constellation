@@ -28,8 +28,8 @@ const thoughtsController = {
     },
     
     addThought({ params, body }, res ) {
-        console.log('params: ', params);
-        console.log('body: ', body);
+        console.log('addThought-params: ', params);
+        console.log('addThought-body: ', body);
         Thoughts.create(body)
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
@@ -45,14 +45,14 @@ const thoughtsController = {
                 }
                 res.json(dbThoughtsData);
             })
-            .catch(err => res.json(err));
+            .catch(err => res.status(400).json(err));
     },
 
     updateThoughtById({ params, body }, res) {
         Thoughts.findOneAndUpdate({ _id: params.id }, body, { new: true })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                    res.status(400).json({ message: 'There is no thought associated with this id.' });
+                    res.status(404).json({ message: 'There is no thought associated with this id.' });
                     return;
                 }
                 res.json(dbThoughtData);
