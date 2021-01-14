@@ -37,7 +37,7 @@ const ReactionSchema = new Schema({
 const ThoughtSchema = new Schema({
     thoughtText: {
         type: String,
-        required: 'You must enter at least one character.',
+        required: 'Your entry must have at least one and no more than 280 characters.',
         minLength: 1,
         maxLength: 280,
         trim: true

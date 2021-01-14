@@ -29,7 +29,7 @@ router
 // PUT and DELETE friend routes /api/users/:userId/friends/:friendId
 router
     .route('/:userId/friends/:friendId')
-    .put(addFriend)
+    .post(addFriend)
     .delete(removeFriend)
 
 

@@ -13,7 +13,7 @@ const thoughtsController = {
 
     getOneThoughtById({ params }, res) {
         console.log('findOneThought-params: ', params)
-        Thought.findOne({ _id: params.id })
+        Thought.findOne({ _id: params.thoughtId })
             .select('-__v')
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
@@ -29,11 +29,14 @@ const thoughtsController = {
     },
     
     addThought({ params, body }, res ) {
-        console.log('addThought-body: ', body)
+        console.log('addThought(body): ', body)
+        // creates the thought
         Thought.create(body)
             // this id will be used to connect the thought with a user
             .then(({ _id }) => {
-                console.log('addThought-_id: ', _id)
+                console.log('addThought(_id): ', _id)
+                console.log('addThought(body.userId):  ', body.userId)
+                console.log('addThought(params.userId): ', params.userId)
                 return User.findOneAndUpdate(
                     { _id: params.userId },
                     { $push: { thoughts: _id } },
