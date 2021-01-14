@@ -26,10 +26,11 @@ router
     .delete(deleteUser);
 
 
-// ADD friend and DELETE friend /api/users/:userId/friends/:friendId
+// PUT and DELETE friend routes /api/users/:userId/friends/:friendId
 router
     .route('/:userId/friends/:friendId')
     .put(addFriend)
     .delete(removeFriend)
+
 
 module.exports = router;

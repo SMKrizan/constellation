@@ -17,13 +17,13 @@ const UserSchema = new Schema({
         {
             type: Schema.Types.ObjectId,
             // tells model which document to search to find thoughts
-            ref: 'Thoughts'
+            ref: 'Thought'
         }
     ],
     friends: [
         {
             type: Schema.Types.ObjectId,
-            // self-referencing
+            // tells model which document to search to find thoughts
             ref: 'User'
         }
     ]
@@ -31,7 +31,6 @@ const UserSchema = new Schema({
     {
         toJSON: {
             virtuals: true,
-            // getters: true
         },
         id: false
     }

@@ -10,7 +10,7 @@ app.use(express.static('public'));
 
 app.use(require('./routes'));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/constellation', {
     // directs findOneAndUpdate() and findOneAndModify() to use native findOneAndUpdate() rather than findAndModify()
     useFindAndModify: false,
     // allows users to fallback to old parser if current (new) parser is buggy
