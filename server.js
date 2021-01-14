@@ -21,5 +21,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/constellation',
 
 // use this to log Mongo queries being executed
 mongoose.set('debug', true);
+// tells mongoose to use createIndexes instead of ensureIndex
+mongoose.set('useCreateIndex', true);
+
 
 app.listen(PORT, () => console.log(`Now connected to localhost:${PORT}`));
