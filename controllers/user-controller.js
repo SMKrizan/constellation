@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 const userController = {
     getAllUsers(req, res) {
@@ -53,17 +53,48 @@ const userController = {
             .catch(err => res.status(400).json(err));
     },
 
-    deleteUser({ params }, res) {
-        User.findOneAndDelete({ _id: params.id })
-            .then(dbUserData => {
-                if (!dbUserData) {
-                    res.status(404).json({ message: 'No user with that id was found.' });
-                    return;
-                }
-                res.json(dbUserData);
-            })
-            .catch(err => res.status(400).json(err));
-    },
+    // deleteUser({ params }, res) {
+    //     User.findOneAndDelete({ _id: params.id })
+    //         .then(dbUserData => {
+    //             if (!dbUserData) {
+    //                 res.status(404).json({ message: 'No user with that id was found.' });
+    //                 return;
+    //             }
+    //             res.json(dbUserData);
+    //         })
+    //         .catch(err => res.status(400).json(err));
+    // },
+
+    async deleteUser({ params }, res) {
+
+        // try {
+        //     const deleteUser = await User.findOneAndDelete({ _id: params.id })
+        //     console.log('deleteUser: deleteUser.thoughts: ', deleteUser.thoughts)
+        //     // console.log('deleteUser: JSON.stringify(deleteUser): ', JSON.stringify(deleteUser))
+        //     const deleteThoughts = await Thought.deleteMany({ _id: deleteUser.thoughts[0] })
+        //     res.json(deleteThoughts)
+        //     res.json(deleteUser)
+        //     return deleteThoughts.deletedCount
+
+            try {
+                const deleteUser = await User.findOneAndDelete({ _id: params.id })
+                console.log('deleteUser: deleteUser.thoughts: ', deleteUser.thoughts)
+                let delThoughts = deleteUser.thoughts
+                if (delThoughts.length) {
+
+                const deleteThoughts = await Thought.deleteMany({ _id: { '$in': delThoughts } } )
+                res.json(deleteThoughts)
+                res.json(deleteUser)
+                return deleteThoughts.deletedCount
+            }
+            res.status(404).json({ message: 'There are no thoughts associated with that user.' })
+            return;
+
+        }   catch(err) {
+            console.error(err)
+        }
+},
+
 
     addFriend({ params, body }, res) {
         User.findOneAndUpdate(
@@ -81,21 +112,21 @@ const userController = {
             .catch(err => res.status(400).json(err));
     },
 
-    removeFriend({ params }, res) {
-        User.findOneAndUpdate(
-            { _id: params.userId },
-            { $pull: { friends: params.friendId } },
-            { new: true }
-        )
-            .then(dbFriendData => {
-                if (!dbFriendData) {
-                    res.status(404).json({ message: 'No friend with that id was found for that user.' });
-                    return;
-                }
-                res.json(dbFriendData)
-            })
-            .catch(err => res.status(400).json(err));
-    }
+        removeFriend({ params }, res) {
+    User.findOneAndUpdate(
+        { _id: params.userId },
+        { $pull: { friends: params.friendId } },
+        { new: true }
+    )
+        .then(dbFriendData => {
+            if (!dbFriendData) {
+                res.status(404).json({ message: 'No friend with that id was found for that user.' });
+                return;
+            }
+            res.json(dbFriendData)
+        })
+        .catch(err => res.status(400).json(err));
+}
 }
 
 module.exports = userController;
