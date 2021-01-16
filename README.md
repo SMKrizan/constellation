@@ -1,29 +1,14 @@
-# constellation: a Social Network API
+# Constellation: a Social Network API
 
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
-
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia Core for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia Core
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
-
-your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia Core.
 
 ## Description
-This application is the API for a social network web application designed to enable and promote sharing among neighbors. Users can submit a post with an item or a list of goods they have to share or post a request for an item, and respond to others' posts.
-
+This application is the API for a social network web application. Users can add and remove friends, add and remove thoughts and add and remove reactions to others' posts.
 
 
 ### Programming Languages and Technologies Used:
 - NoSQL
 - MongoDB
+- Mongoose
 - Node.js
 - ES6
 - Javascript
@@ -43,12 +28,17 @@ This application is the API for a social network web application designed to ena
 1. Clone constellation repository,
 1. Install Node.js ('npm init --y'),
 1. From the terminal, run 'npm start' to instantiate the server and trigger creation of the database,
-1. From the terminal, enter "npm run seed", and
 1. From the terminal, run 'npm start'.
+1. Navigate to Insomnia (or another API testing tool).
 
 
 ## <a name="usage">Usage</a>:
-[![Application Screenshot](./assets/Walkthrough-screenshot.png)*Click the image-link to access a video walkthrough of the application:*]("https://drive.google.com/file/d/1JCVegcQxAKZSh0VNObS1mEwHjHBLnmZ5/view")
+### Walkthrough video A:</br> adding new users & managing friends
+[![Application Screenshot](./assets/walkthrough-screenshotA.jpg)*Click the image-link to access a video walkthrough part A:*]("https://drive.google.com/file/d/1rRi1LmMHBo0__CkeuNh0ytGI1Bi1NUom/view")
+
+### Walkthrough video B:</br> managing thoughts & reactions
+[![Application Screenshot](./assets/walkthrough-screenshotB.jpg)*Click the image-link to access a video walkthrough part B:*]("https://drive.google.com/file/d/11WEddk-BmuYqy4PaKWAfj-RNT5s7r7eB/view")
+
 
     
 ## <a name="contribution-guidelines">Contributions</a>:
