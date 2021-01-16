@@ -34,11 +34,18 @@ This application is the API for a social network web application. Users can add 
 
 ## <a name="usage">Usage</a>:
 ### Walkthrough video A:</br> adding new users & managing friends
-[![Application Screenshot](./assets/walkthrough-screenshotA.jpg)*Click the image-link to access a video walkthrough part A:*]("https://drive.google.com/file/d/1rRi1LmMHBo0__CkeuNh0ytGI1Bi1NUom/view?usp=sharing")
+[![Application Screenshot](./assets/walkthrough-screenshotA.jpg)*Click the image-link to access video walkthrough part A:*]("https://drive.google.com/file/d/1rRi1LmMHBo0__CkeuNh0ytGI1Bi1NUom/view?usp=sharing")
+
+If link is broken please use the following:
+"https://drive.google.com/file/d/1rRi1LmMHBo0__CkeuNh0ytGI1Bi1NUom/view?usp=sharing"
+
 
 
 ### Walkthrough video B:</br> managing thoughts & reactions
 [![Application Screenshot](./assets/walkthrough-screenshotB.jpg)*Click the image-link to access a video walkthrough part B:*]("https://drive.google.com/file/d/11WEddk-BmuYqy4PaKWAfj-RNT5s7r7eB/view?usp=sharing")
+
+If link is broken please use the following:
+"https://drive.google.com/file/d/11WEddk-BmuYqy4PaKWAfj-RNT5s7r7eB/view?usp=sharing"
 
 
 
